@@ -1,10 +1,6 @@
 import time
 import RPi.GPIO as GPIO     # Import the GPIO library
 
-# Remove if not needed ===============
-import keyboard  # using module keyboard
-#======================================
-
 GPIO.setmode(GPIO.BOARD) # Use board numbering scheme for GPIO
 
 # PIN constants
@@ -22,19 +18,51 @@ pwm_a = GPIO.PWM(PWMA_PIN, 100) # Frequency 1KHz
 
 
 def main():
+    # Initialize pins
     pwm_a.start(0)
     GPIO.output(STBY_PIN, GPIO.HIGH)
     GPIO.output(AIN1_PIN, GPIO.LOW)
     GPIO.output(AIN2_PIN, GPIO.HIGH)
 
-    while(1):
-        if keyboard.is_pressed('q'):
-            break
-
-        pwm_a.ChangeDutyCycle(100)
-        # for i in range(100):
-        #     pwm_a.ChangeDutyCycle(i)
-        #     time.sleep(1)
+    pwm_a.ChangeDutyCycle(100)
+    print("Duty cycle: 100")
+    print("AIN1: LOW")
+    print("AIN2: HIGH")
+    print()
+    time.sleep(5)
+    pwm_a.ChangeDutyCycle(50)
+    print("Duty cycle: 50")
+    print("AIN1: LOW")
+    print("AIN2: HIGH")
+    print()
+    time.sleep(5)
+    GPIO.output(AIN1_PIN, GPIO.HIGH)
+    GPIO.output(AIN2_PIN, GPIO.HIGH)
+    print("Duty cycle: 50")
+    print("AIN1: HIGH")
+    print("AIN2: HIGH")
+    print()
+    time.sleep(5)
+    GPIO.output(AIN1_PIN, GPIO.HIGH)
+    GPIO.output(AIN2_PIN, GPIO.LOW)
+    print("Duty cycle: 50")
+    print("AIN1: HIGH")
+    print("AIN2: LOW")
+    print()
+    time.sleep(5)
+    pwm_a.ChangeDutyCycle(100)
+    print("Duty cycle: 100")
+    print("AIN1: HIGH")
+    print("AIN2: LOW")
+    print()
+    time.sleep(5)
+    GPIO.output(AIN1_PIN, GPIO.LOW)
+    GPIO.output(AIN2_PIN, GPIO.LOW)
+    print("Duty cycle: 100")
+    print("AIN1: LOW")
+    print("AIN2: LOW")
+    print()
+    time.sleep(5)
 
     cleanup()
 
@@ -42,6 +70,7 @@ def main():
 def cleanup():
     pwm_a.stop()
     GPIO.cleanup()
+
 
 if __name__ == "__main__":
     main()
