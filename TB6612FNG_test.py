@@ -2,18 +2,7 @@ import time
 import RPi.GPIO as GPIO     # Import the GPIO library
 
 # Remove if not needed ===============
-from pynput import keyboard
-run = True
-
-def on_press(key):
-    global run
-    if key == keyboard.Key.esc:
-        run = False
-
-listener = keyboard.Listener(on_press=on_press)
-# listener.start()  # start to listen on a separate thread
-# listener.join()  # remove if main thread is polling self.keys
-
+import keyboard  # using module keyboard
 #======================================
 
 GPIO.setmode(GPIO.BOARD) # Use board numbering scheme for GPIO
@@ -38,9 +27,8 @@ def main():
     GPIO.output(AIN1_PIN, GPIO.LOW)
     GPIO.output(AIN2_PIN, GPIO.HIGH)
 
-    while(run):
-        usr_input = int(input("Enter motor speed (0 to speed): "))
-        if usr_input == 0:
+    while(1):
+        if keyboard.is_pressed('q'):
             break
 
         pwm_a.ChangeDutyCycle(100)
