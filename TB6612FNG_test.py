@@ -14,7 +14,7 @@ GPIO.setup(STBY_PIN, GPIO.OUT)
 GPIO.setup(AIN1_PIN, GPIO.OUT)
 GPIO.setup(AIN2_PIN, GPIO.OUT)
 GPIO.setup(PWMA_PIN, GPIO.OUT)
-pwm_a = GPIO.PWM(PWMA_PIN, 1000) # Frequency 1KHz
+pwm_a = GPIO.PWM(PWMA_PIN, 100) # Frequency 1KHz
 
 
 def main():
@@ -23,9 +23,11 @@ def main():
     GPIO.output(AIN1_PIN, GPIO.LOW)
     GPIO.output(AIN2_PIN, GPIO.HIGH)
 
-    for i in range(100):
-        pwm_a.ChangeDutyCycle(i)
-        time.sleep(1)
+    while(1):
+        pwm_a.ChangeDutyCycle(100)
+        # for i in range(100):
+        #     pwm_a.ChangeDutyCycle(i)
+        #     time.sleep(1)
 
     cleanup()
 
