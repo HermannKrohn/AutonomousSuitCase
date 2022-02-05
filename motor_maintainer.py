@@ -1,4 +1,3 @@
-from xml.etree.ElementTree import QName
 import RPi.GPIO as GPIO     # Import the GPIO library
 
 class MotorMaintainer:
