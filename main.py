@@ -23,6 +23,7 @@ right_motor = None
 mtr_maintainer = None
 
 def setup():
+    GPIO.setmode(GPIO.BOARD) # Use board numbering scheme for GPIO
     left_motor = Motor(LEFT_AIN1_PIN, LEFT_AIN2_PIN, LEFT_PWM_PIN)
     right_motor = Motor(RIGHT_AIN1_PIN, RIGHT_AIN2_PIN, RIGHT_PWM_PIN)
     mtr_maintainer = MotorMaintainer(left_motor, right_motor, STBY_PIN)
