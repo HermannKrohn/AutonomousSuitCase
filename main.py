@@ -45,9 +45,17 @@ def setup():
 def loop():
     while (1):
         x_displacement, y_displacement = pixy_wrap.get_dist_from_cam_center()
-        
+        if x_displacement == None:
+            mtr_maintainer.nav_brake()
 
         print(x_displacement, y_displacement)
+        if x_displacement > 0:
+            mtr_maintainer.nav_right(50, 75)
+        elif x_displacement < 0:
+            mtr_maintainer.nav_left(50, 75)
+        else:
+            # dirve forward
+            mtr_maintainer.nav_forward(50)
 
         # mtr_maintainer.nav_forward(50)
         # time.sleep(5)
