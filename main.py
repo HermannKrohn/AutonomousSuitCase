@@ -30,7 +30,8 @@ pixy_wrap = None
 
 def setup():
     # Init motors
-    global left_motor, right_motor, mtr_maintainer
+    global left_motor, right_motor, mtr_maintainer, pixy_wrap
+
     GPIO.setmode(GPIO.BOARD) # Use board numbering scheme for GPIO
     left_motor = Motor(LEFT_AIN1_PIN, LEFT_AIN2_PIN, LEFT_PWM_PIN)
     right_motor = Motor(RIGHT_AIN1_PIN, RIGHT_AIN2_PIN, RIGHT_PWM_PIN)
