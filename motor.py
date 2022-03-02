@@ -21,7 +21,7 @@ class Motor:
         # Enable pwm on the pwm pin
         # Use a frequency of 1KHz
         # TODO: Use hardware PWM instead of software
-        self.pwm_obj = GPIO.PWM(self.pwm_pin, 100)
+        self.pwm_obj = GPIO.PWM(self.pwm_pin, 1000)
         self.pwm_obj.start(0) # Init motor with a duty cycle of zero
 
     def clamp_speed(self, speed):
