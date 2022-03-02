@@ -3,7 +3,7 @@ import time
 
 from motor_maintainer import MotorMaintainer
 from motor import Motor
-from CV.pixy_wrapper import PixyWrapper
+from pixy_wrapper import PixyWrapper
 
 # =============
 # Constants
