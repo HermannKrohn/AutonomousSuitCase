@@ -1,3 +1,4 @@
+from pyexpat.errors import XML_ERROR_UNCLOSED_CDATA_SECTION
 import RPi.GPIO as GPIO # Import the GPIO library
 import time
 
@@ -43,7 +44,9 @@ def setup():
 
 def loop():
     while (1):
-        pixy_wrap.get_blocks()
+        x_displacement, y_displacement = pixy_wrap.get_dist_from_cam_center()
+
+        print(x_displacement, y_displacement)
 
         # mtr_maintainer.nav_forward(50)
         # time.sleep(5)
