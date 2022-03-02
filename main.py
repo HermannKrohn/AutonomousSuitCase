@@ -45,6 +45,7 @@ def setup():
 def loop():
     while (1):
         x_displacement, y_displacement = pixy_wrap.get_dist_from_cam_center()
+        
 
         print(x_displacement, y_displacement)
 

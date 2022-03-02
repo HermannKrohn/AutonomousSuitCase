@@ -31,13 +31,15 @@ class PixyWrapper:
             # for index in range (0, count):
                 # print('[BLOCK: SIG=%d X=%3d Y=%3d WIDTH=%3d HEIGHT=%3d]' % (self.blocks[index].m_signature, self.blocks[index].m_x, self.blocks[index].m_y, self.blocks[index].m_width, self.blocks[index].m_height))
             return self.blocks[0].m_x, self.blocks[0].m_y
-        return None
+        return None, None
 
     def get_cam_frame(self):
         return pixy.get_frame_width(), pixy.get_frame_height()
 
     def get_dist_from_cam_center(self):
         block_x, block_y = self.get_blocks()
+        if block_x == None:
+            return None, None
         frame_width, frame_height = self.get_cam_frame()
 
         x_displacement = block_x - (frame_width/2)
