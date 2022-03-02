@@ -51,12 +51,14 @@ def loop():
 
         print(x_displacement, y_displacement)
         if x_displacement > 50:
-            mtr_maintainer.nav_right(50, 75)
+            # mtr_maintainer.nav_right(50, 75)
+            mtr_maintainer.nav_dynamic_forward(100, 80)
         elif x_displacement < -50:
-            mtr_maintainer.nav_left(50, 75)
+            # mtr_maintainer.nav_left(50, 75)
+            mtr_maintainer.nav_dynamic_forward(80, 100)
         else:
             # dirve forward
-            mtr_maintainer.nav_forward(50)
+            mtr_maintainer.nav_forward(100)
 
         # mtr_maintainer.nav_forward(50)
         # time.sleep(5)

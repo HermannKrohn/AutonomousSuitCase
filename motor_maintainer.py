@@ -16,6 +16,10 @@ class MotorMaintainer:
         self.left_motor.forwards(speed)
         self.right_motor.forwards(speed)
 
+    def nav_dynamic_forward(self, left_speed, right_speed):
+        self.left_motor.forwards(left_speed)
+        self.right_motor.forwards(right_speed)
+
     def nav_backwards(self, speed):
         self.left_motor.backwards(speed)
         self.right_motor.backwards(speed)
