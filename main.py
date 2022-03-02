@@ -47,11 +47,12 @@ def loop():
         x_displacement, y_displacement = pixy_wrap.get_dist_from_cam_center()
         if x_displacement == None:
             mtr_maintainer.nav_brake()
+            continue
 
         print(x_displacement, y_displacement)
-        if x_displacement > 0:
+        if x_displacement > 50:
             mtr_maintainer.nav_right(50, 75)
-        elif x_displacement < 0:
+        elif x_displacement < -50:
             mtr_maintainer.nav_left(50, 75)
         else:
             # dirve forward
