@@ -49,9 +49,9 @@ def loop():
             mtr_maintainer.nav_brake()
             continue
 
-        print(x_displacement, y_displacement)
+        print(x_displacement, y_displacement) # for debugging
 
-        mtr_maintainer.nav_dynamic_forward(turn_factor(x_displacement, l, r))
+        mtr_maintainer.nav_dynamic_forward(turn_factor(x_displacement, l, r)) # drive
 
 
         # mtr_maintainer.nav_forward(50)
@@ -66,20 +66,22 @@ def loop():
         # time.sleep(5)
 
 def turn_factor(x, l, r):
+    # This might be too sensitive might benefit from either a time delay, or 
+    # stretching out how each increment or decrement of motor values effect speed
     
-    if abs(x) > 100:
-        dx = 3
-    elif abs(x) > 35:
-        dx = 2
+    if abs(x) > 120:
+        dx = 3 # if x_displacement is more than 120 pixels from the centre
+    elif abs(x) > 60:
+        dx = 2 # # if x_displacement is more than 60 pixels from the centre
     else: 
         dx = 1
     
     if x > 0:
-        return clamp(l + dx, 60, 100), clamp(r - dx, 60, 100)
+        return clamp(l + dx, 60, 100), clamp(r - dx, 60, 100) # make right turn
     else: # x < 0
-        return clamp(l - dx, 60, 100), clamp(r + dx, 60, 100)
+        return clamp(l - dx, 60, 100), clamp(r + dx, 60, 100) # make a left turn
         
-def clamp(num, min_value, max_value):
+def clamp(num, min_value, max_value): # clamps num to be between two other numbers
         num = max(min(num, max_value), min_value)
         return num
 
