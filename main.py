@@ -76,7 +76,7 @@ def turn_factor(x, l, r):
     
     if x > 0:
         return clamp(l + dx, 60, 100), clamp(r - dx, 60, 100)
-    else:
+    else: # x < 0
         return clamp(l - dx, 60, 100), clamp(r + dx, 60, 100)
         
 def clamp(num, min_value, max_value):
