@@ -31,6 +31,7 @@ class PixyWrapper:
             # for index in range (0, count):
                 # print('[BLOCK: SIG=%d X=%3d Y=%3d WIDTH=%3d HEIGHT=%3d]' % (self.blocks[index].m_signature, self.blocks[index].m_x, self.blocks[index].m_y, self.blocks[index].m_width, self.blocks[index].m_height))
             return self.blocks[0].m_x, self.blocks[0].m_y
+        print("no blocks")    
         return None, None
 
     def get_cam_frame(self):
