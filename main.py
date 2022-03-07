@@ -42,7 +42,7 @@ def setup():
     pixy_wrap = PixyWrapper(PIXY_BLOCK_LEN)
 
 def loop():
-    l = r = 80
+    l = r = 100
     while (1):
         x_displacement, y_displacement = pixy_wrap.get_dist_from_cam_center()
         if x_displacement == None:
@@ -75,7 +75,7 @@ def turn_factor(x, l, r):
     elif abs(x) > 60:
         dx = 2 # # if x_displacement is more than 60 pixels from the centre
     else: 
-        dx = 1
+        return 100, 100
     
     if x > 0:
         return clamp(l + dx, 20, 100), clamp(r - dx, 20, 100) # make right turn
