@@ -42,7 +42,7 @@ def setup():
     pixy_wrap = PixyWrapper(PIXY_BLOCK_LEN)
 
 def loop():
-    l, r = 80
+    l = r = 80
     while (1):
         x_displacement, y_displacement = pixy_wrap.get_dist_from_cam_center()
         if x_displacement == None:
