@@ -78,9 +78,9 @@ def turn_factor(x, l, r):
         dx = 1
     
     if x > 0:
-        return clamp(l + dx, 60, 100), clamp(r - dx, 60, 100) # make right turn
+        return clamp(l + dx, 20, 100), clamp(r - dx, 20, 100) # make right turn
     else: # x < 0
-        return clamp(l - dx, 60, 100), clamp(r + dx, 60, 100) # make a left turn
+        return clamp(l - dx, 20, 100), clamp(r + dx, 20, 100) # make a left turn
         
 def clamp(num, min_value, max_value): # clamps num to be between two other numbers
         num = max(min(num, max_value), min_value)
