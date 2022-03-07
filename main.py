@@ -51,7 +51,8 @@ def loop():
 
         print(x_displacement, y_displacement) # for debugging
 
-        mtr_maintainer.nav_dynamic_forward(turn_factor(x_displacement, l, r)) # drive
+        l, r = turn_factor(x_displacement, l, r)
+        mtr_maintainer.nav_dynamic_forward(l, r) # drive
 
 
         # mtr_maintainer.nav_forward(50)
