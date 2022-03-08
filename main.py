@@ -74,7 +74,6 @@ def turn_factor(x, l, r):
     elif abs(x) > 50:
         dx = 1 # # if x_displacement is more than 50 pixels from the centre
     else: 
-
         return l+1, r+1
     
     if x > 0:
