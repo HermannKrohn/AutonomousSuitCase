@@ -70,11 +70,11 @@ def turn_factor(x, l, r):
     # This might be too sensitive might benefit from either a time delay, or 
     # stretching out how each increment or decrement of motor values effect speed
     if abs(x) > 120:
-        dx = 3 # if x_displacement is more than 120 pixels from the centre
+        dx = 2 # if x_displacement is more than 120 pixels from the centre
     elif abs(x) > 50:
-        dx = 2 # # if x_displacement is more than 60 pixels from the centre
+        dx = 1 # # if x_displacement is more than 50 pixels from the centre
     else: 
-        
+
         return l+1, r+1
     
     if x > 0:
