@@ -1,4 +1,3 @@
-from pyexpat.errors import XML_ERROR_UNCLOSED_CDATA_SECTION
 import RPi.GPIO as GPIO # Import the GPIO library
 import time
 
@@ -6,9 +5,9 @@ from motor_maintainer import MotorMaintainer
 from motor import Motor
 from pixy_wrapper import PixyWrapper
 
-# =============
+# =========
 # Constants
-# =============
+# =========
 # Pin constants
 LEFT_AIN1_PIN = 13
 LEFT_AIN2_PIN = 11
@@ -41,6 +40,7 @@ def setup():
     # Init PixyCam
     pixy_wrap = PixyWrapper(PIXY_BLOCK_LEN)
 
+
 def loop():
     l = r = 80
     while (1):
@@ -54,7 +54,6 @@ def loop():
         l, r = turn_factor(x_displacement, l, r)
         mtr_maintainer.nav_dynamic_forward(l, r) # drive
 
-
         # mtr_maintainer.nav_forward(50)
         # time.sleep(5)
         # mtr_maintainer.nav_backwards(50)
@@ -66,24 +65,27 @@ def loop():
         # mtr_maintainer.nav_brake()
         # time.sleep(5)
 
+
 def turn_factor(x, l, r):
-    # This might be too sensitive might benefit from either a time delay, or 
+    # This might be too sensitive might benefit from either a time delay, or
     # stretching out how each increment or decrement of motor values effect speed
     if abs(x) > 120:
         dx = 2 # if x_displacement is more than 120 pixels from the centre
     elif abs(x) > 50:
         dx = 1 # # if x_displacement is more than 50 pixels from the centre
-    else: 
+    else:
         return l+1, r+1
-    
+
     if x > 0:
         return clamp(l + dx, 20, 100), clamp(r - dx, 20, 100) # make right turn
     else: # x < 0
         return clamp(l - dx, 20, 100), clamp(r + dx, 20, 100) # make a left turn
-        
+
+
 def clamp(num, min_value, max_value): # clamps num to be between two other numbers
         num = max(min(num, max_value), min_value)
         return num
+
 
 def cleanup():
     mtr_maintainer.cleanup()

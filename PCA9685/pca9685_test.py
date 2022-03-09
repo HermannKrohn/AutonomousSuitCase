@@ -1,8 +1,8 @@
 from gpiozero import LED
 from time import sleep
-import PCA9685.Servo
+import Servo
 
-PCA9685.Servo.test()
+Servo.test()
 
 # pin_17 = LED(17)
 

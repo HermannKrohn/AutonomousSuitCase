@@ -2,7 +2,7 @@ import RPi.GPIO as GPIO # Import the GPIO library
 
 class Motor:
     """
-    Abstraction class for controlling a single motor using the TB6612FNG 
+    Abstraction class for controlling a single motor using the TB6612FNG
     motor controller board
     """
     def __init__(self, ain1_pin, ain2_pin, pwm_pin):
@@ -33,7 +33,6 @@ class Motor:
             print(f"Invalid speed: {speed}")
 
         return speed
-
 
     def forwards(self, speed):
         clamp_speed = self.clamp_speed(speed)
