@@ -52,9 +52,9 @@ def loop():
             mtr_maintainer.nav_dynamic_forward(l, r)
             continue
 
-        if y_displacement < -10:
-            l = clamp(l-1, 0, 100)
-            r = clamp(r-1, 0, 100)
+        if y_displacement < -5:
+            l = clamp(l-2, 0, 100)
+            r = clamp(r-2, 0, 100)
             mtr_maintainer.nav_dynamic_forward(l, r)
             continue
 
