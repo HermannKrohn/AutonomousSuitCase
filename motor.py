@@ -27,10 +27,10 @@ class Motor:
     def clamp_speed(self, speed):
         if speed > 100:
             speed = 100
-            print(f"Invalid speed: {speed}")
+            # print(f"Invalid speed: {speed}")
         elif speed < 0:
             speed = 0
-            print(f"Invalid speed: {speed}")
+            # print(f"Invalid speed: {speed}")
 
         return speed
 

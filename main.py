@@ -46,7 +46,10 @@ def loop():
     while (1):
         x_displacement, y_displacement = pixy_wrap.get_dist_from_cam_center()
         if x_displacement == None:
-            mtr_maintainer.nav_brake()
+            # mtr_maintainer.nav_brake()
+            l -= 1
+            r -= 1
+            mtr_maintainer.nav_dynamic_forward(l, r)
             continue
 
         print(x_displacement, y_displacement) # for debugging
@@ -74,7 +77,7 @@ def turn_factor(x, l, r):
     elif abs(x) > 50:
         dx = 1 # # if x_displacement is more than 50 pixels from the centre
     else:
-        return l+1, r+1
+        return clamp(l+1, 0, 100), clamp(r+1, 0, 100) 
 
     if x > 0:
         return clamp(l + dx, 20, 100), clamp(r - dx, 20, 100) # make right turn
