@@ -47,8 +47,8 @@ def loop():
         x_displacement, y_displacement = pixy_wrap.get_dist_from_cam_center()
         if x_displacement == None:
             # mtr_maintainer.nav_brake()
-            l -= 1
-            r -= 1
+            l = clamp(l-1, 0, 100)
+            r = clamp(r-1, 0, 100)
             mtr_maintainer.nav_dynamic_forward(l, r)
             continue
 
